@@ -18,7 +18,7 @@ public class PlaneService {
     PlaneJPA planeJPA;
 
 //    public Plane GetPlaneCapacity
-    public int findById (int id){
+    public int getCapacityById (int id){
         Plane plane = planeJPA.findById(id).orElse(null);
         if(plane == null){
             throw  new GeneralException(PlaneException.CANNOT_FIND_PLANE);
