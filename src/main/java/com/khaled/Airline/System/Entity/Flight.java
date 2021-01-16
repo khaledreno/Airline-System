@@ -2,21 +2,33 @@ package com.khaled.Airline.System.Entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int flight_no ;
+    private int flight_id ;
 
-    @NotBlank
-    @Column(name = "FlightFrom")
-    private String FlightFrom;
+//    @NotBlank
+//    @Column(name = "FlightFrom")
+//    private String FlightFrom;
+@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+        CascadeType.REFRESH})
+@JoinColumn(name = "AirportCountryFrom")
+    private Airport FlightFrom;
 
-    @NotBlank
-    @Column(name = "FlightTo")
-    private String FlightTo;
+
+//    @NotBlank
+//    @Column(name = "FlightTo")
+//    private String FlightTo;
+@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+        CascadeType.REFRESH})
+@JoinColumn(name = "AirportCountryTo")
+    private Airport FlightTo;
+
 
     @NotBlank
     @Column(name = "DepartureTime")
@@ -36,12 +48,14 @@ public class Flight {
     @Column(name = "SeatsLeft")
     private int SeatsLeft;
 
+
+
     public int getFlight_no() {
-        return flight_no;
+        return flight_id;
     }
 
     public void setFlight_no(int flight_no) {
-        this.flight_no = flight_no;
+        this.flight_id = flight_no;
     }
 
     public int getTicketPrice() {
@@ -52,20 +66,31 @@ public class Flight {
         TicketPrice = ticketPrice;
     }
 
-    public String getFlightFrom() {
+    public Airport getFlightFrom() {
         return FlightFrom;
     }
 
-    public void setFlightFrom(String flightFrom) {
+    public void setFlightFrom(Airport flightFrom) {
         FlightFrom = flightFrom;
     }
 
-    public String getFlightTo() {
+
+    public Airport getFlightTo() {
         return FlightTo;
     }
 
-    public void setFlightTo(String flightTo) {
+    public void setFlightTo(Airport flightTo) {
         FlightTo = flightTo;
+    }
+
+
+
+    public int getSeatsLeft() {
+        return SeatsLeft;
+    }
+
+    public void setSeatsLeft(int seatsLeft) {
+        SeatsLeft = seatsLeft;
     }
 
     public String getDepartureTime() {
@@ -99,4 +124,7 @@ public class Flight {
     public void setSeatLeft(int seatLeft) {
         SeatsLeft = seatLeft;
     }
+
+
+
 }

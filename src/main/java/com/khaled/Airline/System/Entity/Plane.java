@@ -1,6 +1,8 @@
 package com.khaled.Airline.System.Entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Plane {
@@ -18,6 +20,21 @@ public class Plane {
 
     @Column(name = "ManufactureYear")
     private int ManufactureYear;
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+    CascadeType.REFRESH})
+    @JoinColumn(name = "airport_id")
+    private Airport airport;
+
+
+    @ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,
+    CascadeType.REFRESH})
+    @JoinTable(
+            name = "Plane_Airport",
+            joinColumns = @JoinColumn(name = "plan_id"),
+            inverseJoinColumns = @JoinColumn(name = "airportID") //////////////////////////////////////////
+    )
+    private Set<Airport> airportlist = new HashSet<>();
 
     public int getPlan_id() {
         return plan_id;

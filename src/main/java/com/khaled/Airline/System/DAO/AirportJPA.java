@@ -4,6 +4,6 @@ import com.khaled.Airline.System.Entity.Airport;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AirportJPA extends JpaRepository<Airport,Integer> {
-     boolean deleteById(int idf);
+     boolean deleteById(int id);
 
 }

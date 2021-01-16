@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReservationJPA extends JpaRepository<Reservation,Integer> {
-    public boolean deleteById(int idf);
+     boolean deleteById(int id);
 
 
 
