@@ -1,6 +1,9 @@
 package com.khaled.Airline.System.Entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity(name = "airport")
 public class Airport {
@@ -49,6 +52,12 @@ public class Airport {
     public void setAirportCapacity(int airportCapacity) {
         this.airportCapacity = airportCapacity;
     }
+
+
+@OneToMany(mappedBy = "airport",
+        cascade = {CascadeType.DETACH,CascadeType.MERGE,
+        CascadeType.PERSIST,CascadeType.REFRESH})
+    private Set<Plane> plane = new HashSet<>();
 
     @Override
     public String toString() {

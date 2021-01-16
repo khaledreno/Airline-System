@@ -9,7 +9,7 @@ public interface PassengerJPA extends JpaRepository<Passenger,Integer> {
 
  //   Passenger findByPhone(String phone);
    // Passenger findBynational_id(int id);
- public boolean deleteById(int idf);
+  boolean deleteById(int id);
 
 
 

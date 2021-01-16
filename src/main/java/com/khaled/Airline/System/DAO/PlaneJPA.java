@@ -12,7 +12,7 @@ public interface PlaneJPA  extends JpaRepository<Plane,Integer> {
 
     List<Plane> findByCapacity(int capacity);
 
-    public boolean deleteById(int idf);
+     boolean deleteById(int id);
 
 
 //    Flight FindByDeparture(String date);

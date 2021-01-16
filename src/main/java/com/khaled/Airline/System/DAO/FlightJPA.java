@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface FlightJPA extends JpaRepository<Flight,Integer> {
 
 
-    public boolean deleteById(int idf);
+     boolean deleteById(int id);
 }

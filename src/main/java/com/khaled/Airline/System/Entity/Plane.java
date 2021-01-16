@@ -19,6 +19,11 @@ public class Plane {
     @Column(name = "ManufactureYear")
     private int ManufactureYear;
 
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+    CascadeType.REFRESH})
+    @JoinColumn(name = "airport_id")
+    private Airport airport;
+
     public int getPlan_id() {
         return plan_id;
     }
