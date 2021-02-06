@@ -68,11 +68,11 @@ public class Airport {
     private Set<Plane> plane = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "FlightFrom",cascade = CascadeType.ALL)
-    private Set<Flight> flightFr = new HashSet<>();
-
-    @OneToMany(mappedBy = "FlightTo",cascade = CascadeType.ALL)
-    private Set<Flight> flightTo = new HashSet<>();
+//    @OneToMany(mappedBy = "FlightFrom",cascade = CascadeType.ALL)
+//    private Set<Flight> flightFr = new HashSet<>();
+//
+//    @OneToMany(mappedBy = "FlightTo",cascade = CascadeType.ALL)
+//    private Set<Flight> flightTo = new HashSet<>();
 
 
     @ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,

@@ -5,29 +5,24 @@ import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity(name = "flight")
 public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int flight_id ;
 
-//    @NotBlank
-//    @Column(name = "FlightFrom")
-//    private String FlightFrom;
-@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
-        CascadeType.REFRESH})
-@JoinColumn(name = "AirportCountryFrom")
-    private Airport FlightFrom;
 
-
-//    @NotBlank
-//    @Column(name = "FlightTo")
-//    private String FlightTo;
-@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
-        CascadeType.REFRESH})
-@JoinColumn(name = "AirportCountryTo")
-    private Airport FlightTo;
+//@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+//        CascadeType.REFRESH})
+//@JoinColumn(name = "AirportCountryFrom")
+//    private Airport FlightFrom;
+//
+//
+//@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+//        CascadeType.REFRESH})
+//@JoinColumn(name = "AirportCountryTo")
+//    private Airport FlightTo;
 
 
     @NotBlank
@@ -66,24 +61,6 @@ public class Flight {
         TicketPrice = ticketPrice;
     }
 
-    public Airport getFlightFrom() {
-        return FlightFrom;
-    }
-
-    public void setFlightFrom(Airport flightFrom) {
-        FlightFrom = flightFrom;
-    }
-
-
-    public Airport getFlightTo() {
-        return FlightTo;
-    }
-
-    public void setFlightTo(Airport flightTo) {
-        FlightTo = flightTo;
-    }
-
-
 
     public int getSeatsLeft() {
         return SeatsLeft;
@@ -109,13 +86,6 @@ public class Flight {
         ArrivalTime = arrivalTime;
     }
 
-//    public Plane getPlane() {
-//        return plane;
-//    }
-//
-//    public void setPlane(Plane plane) {
-//        this.plane = plane;
-//    }
 
     public int getSeatLeft() {
         return SeatsLeft;

@@ -2,6 +2,7 @@ package com.khaled.Airline.System.Controller;
 
 import com.khaled.Airline.System.DAO.FlightJPA;
 import com.khaled.Airline.System.Entity.Flight;
+import com.khaled.Airline.System.Entity.Passenger;
 import com.khaled.Airline.System.Exceptions.FlghtException;
 import com.khaled.Airline.System.Exceptions.GeneralException;
 import com.khaled.Airline.System.Service.FlightService;
@@ -22,17 +23,6 @@ public class FlightController {
 
     @Autowired
     FlightJPA flightJPA;
-
-//    @DeleteMapping("/{id}")
-//    public String deleteFlight(@PathVariable int id){
-//    Optional<Flight> flight = flightJPA.findById(id);
-//    if (flight == null){
-//        throw new RuntimeException("this note is not found");
-//    }
-//    flightJPA.deleteById(id);
-//    return " deleted ";
-//    }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteFlight(@PathVariable int id){
