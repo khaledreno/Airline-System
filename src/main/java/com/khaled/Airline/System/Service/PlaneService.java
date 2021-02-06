@@ -1,15 +1,11 @@
 package com.khaled.Airline.System.Service;
 
 import com.khaled.Airline.System.DAO.PlaneJPA;
-import com.khaled.Airline.System.DAO.ReservationJPA;
 import com.khaled.Airline.System.Entity.Plane;
 import com.khaled.Airline.System.Exceptions.GeneralException;
 import com.khaled.Airline.System.Exceptions.PlaneException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.LinkedList;
-import java.util.List;
 
 @Service
 public class PlaneService {

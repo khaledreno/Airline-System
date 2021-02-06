@@ -32,7 +32,7 @@ public class Plane {
     @JoinTable(
             name = "Plane_Airport",
             joinColumns = @JoinColumn(name = "plan_id"),
-            inverseJoinColumns = @JoinColumn(name = "airportID") //////////////////////////////////////////
+            inverseJoinColumns = @JoinColumn(name = "airportID")
     )
     private Set<Airport> airportlist = new HashSet<>();
 

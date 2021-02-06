@@ -13,16 +13,16 @@ public class Flight {
     private int flight_id ;
 
 
-//@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
-//        CascadeType.REFRESH})
-//@JoinColumn(name = "AirportCountryFrom")
-//    private Airport FlightFrom;
-//
-//
-//@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
-//        CascadeType.REFRESH})
-//@JoinColumn(name = "AirportCountryTo")
-//    private Airport FlightTo;
+@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+        CascadeType.REFRESH})
+@JoinColumn(name = "AirportCountryFrom")
+    private Airport FlightFrom;
+
+
+@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
+        CascadeType.REFRESH})
+@JoinColumn(name = "AirportCountryTo")
+    private Airport FlightTo;
 
 
     @NotBlank
@@ -37,13 +37,9 @@ public class Flight {
     @Column(name = "TicketPrice")
     private int TicketPrice;
 
-//    @Column(name = "plane")
-//    private Plane plane;
     @NotBlank
     @Column(name = "SeatsLeft")
     private int SeatsLeft;
-
-
 
     public int getFlight_no() {
         return flight_id;
@@ -94,6 +90,7 @@ public class Flight {
     public void setSeatLeft(int seatLeft) {
         SeatsLeft = seatLeft;
     }
+
 
 
 

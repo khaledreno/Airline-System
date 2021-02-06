@@ -28,6 +28,8 @@ public class Passenger {
     @Column(name = "phone",unique = true)
     private String Phone;
 
+
+
     public int getPassenger_id() {
         return passenger_id;
     }

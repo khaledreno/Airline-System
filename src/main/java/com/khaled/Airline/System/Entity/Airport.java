@@ -21,12 +21,28 @@ public class Airport {
     @Column(name = "AirportCapacity")
     private int airportCapacity;
 
-    @Column(name = "AirportCountryFrom")
-    private String airportCountryFrom;
+//    @Column(name = "AirportCountryFrom")
+//    private String airportCountryFrom;
+//
+//    @Column(name = "AirportCountryTo")
+//    private String airportCountryTo;
 
-    @Column(name = "AirportCountryTo")
-    private String airportCountryTo;
 
+    public Set<Plane> getPlane() {
+        return plane;
+    }
+
+    public void setPlane(Set<Plane> plane) {
+        this.plane = plane;
+    }
+
+    public Set<Plane> getPlanelist() {
+        return planelist;
+    }
+
+    public void setPlanelist(Set<Plane> planelist) {
+        this.planelist = planelist;
+    }
 
     public int getAirportID() {
         return airportID;
