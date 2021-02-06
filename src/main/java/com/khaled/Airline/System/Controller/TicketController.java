@@ -43,11 +43,6 @@ public class TicketController {
         return new ResponseEntity<>(ticket,null,HttpStatus.CREATED);
     }
 
-//    @PostMapping
-//    public ResponseEntity<?> addReservation(@RequestBody Reservation reservation){
-//        reservationJPA.save(reservation);
-//        return new ResponseEntity<>(reservation,null,HttpStatus.CREATED);
-//    }
 
     @PutMapping
     public ResponseEntity<?> updateTicket(@RequestBody Ticket ticket){

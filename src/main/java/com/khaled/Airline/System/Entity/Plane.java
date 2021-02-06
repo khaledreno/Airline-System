@@ -1,7 +1,9 @@
 package com.khaled.Airline.System.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,7 +25,7 @@ public class Plane {
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
     CascadeType.REFRESH})
-    @JoinColumn(name = "airport_id")
+    @JoinColumn(name = "CurrentAirportId")
     private Airport airport;
 
 
@@ -34,7 +36,7 @@ public class Plane {
             joinColumns = @JoinColumn(name = "plan_id"),
             inverseJoinColumns = @JoinColumn(name = "airportID")
     )
-    private Set<Airport> airportlist = new HashSet<>();
+    private List<Airport> airportlist = new ArrayList<>();
 
     public int getPlan_id() {
         return plan_id;
@@ -42,6 +44,22 @@ public class Plane {
 
     public void setPlan_id(int plan_id) {
         this.plan_id = plan_id;
+    }
+
+    public Airport getAirport() {
+        return airport;
+    }
+
+    public void setAirport(Airport airport) {
+        this.airport = airport;
+    }
+
+    public List<Airport> getAirportlist() {
+        return airportlist;
+    }
+
+    public void setAirportlist(List<Airport> airportlist) {
+        this.airportlist = airportlist;
     }
 
     public int getCapacity() {

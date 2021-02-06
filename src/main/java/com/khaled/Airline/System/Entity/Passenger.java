@@ -7,7 +7,6 @@ public class Passenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "passenger_id")
     private int passenger_id;
 
     @Column(name = "national_id",unique = true)
