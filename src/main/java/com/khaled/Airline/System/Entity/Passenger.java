@@ -27,7 +27,18 @@ public class Passenger {
     @Column(name = "phone",unique = true)
     private String Phone;
 
+    //mapping between ticket and passenger name
+    @OneToOne(mappedBy = "passenger", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Ticket Passngername;
 
+    public Ticket getPassngername() {
+        return Passngername;
+    }
+
+    public void setPassngername(Ticket passngername) {
+        Passngername = passngername;
+    }
 
     public int getPassenger_id() {
         return passenger_id;

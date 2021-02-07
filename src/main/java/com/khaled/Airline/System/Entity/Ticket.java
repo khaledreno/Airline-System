@@ -13,6 +13,18 @@ public class Ticket {
     @Column(name = "TicketPrice")
     private int TicketPrice;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PassngerName")
+    private Passenger passenger;
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
     public int getTicketID() {
         return TicketID;
     }
