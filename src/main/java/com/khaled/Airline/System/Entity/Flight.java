@@ -12,6 +12,11 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int flight_id ;
 
+    @OneToOne(mappedBy = "PClass", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Ticket x;
+
+
 
 @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
         CascadeType.REFRESH})

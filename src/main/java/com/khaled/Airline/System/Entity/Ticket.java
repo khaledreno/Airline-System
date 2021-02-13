@@ -14,8 +14,21 @@ public class Ticket {
     private int TicketPrice;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PassngerName")
+    @JoinColumn(name = "PassengerName")
     private Passenger passenger;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Class")
+    private Flight PClass;
+
+
+//    public Plane getPClass() {
+//        return PClass;
+//    }
+//
+//    public void setPClass(Plane PClass) {
+//        this.PClass = PClass;
+//    }
 
     public Passenger getPassenger() {
         return passenger;

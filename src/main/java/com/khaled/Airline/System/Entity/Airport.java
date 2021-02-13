@@ -21,7 +21,18 @@ public class Airport {
     @Column(name = "AirportCapacity")
     private int airportCapacity;
 
-//    @Column(name = "AirportCountryFrom")
+    @Column(name = "GateNumber")
+    private int GateNumber;
+
+    public int getGateNumber() {
+        return GateNumber;
+    }
+
+    public void setGateNumber(int gateNumber) {
+        GateNumber = gateNumber;
+    }
+
+    //    @Column(name = "AirportCountryFrom")
 //    private String airportCountryFrom;
 //
 //    @Column(name = "AirportCountryTo")

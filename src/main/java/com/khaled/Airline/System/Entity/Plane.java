@@ -23,10 +23,31 @@ public class Plane {
     @Column(name = "ManufactureYear")
     private int ManufactureYear;
 
+    @Column(name = "SeatNumber")
+    private int SeatNumber;
+
+////    private PlaneClasses gClass;
+//    public enum gClass {
+//        ClassA,
+//        ClassB,
+//        ClassC;
+//    }
+
+    public int getSeatNumber() {
+        return SeatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        SeatNumber = seatNumber;
+    }
+
+//
+
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
     CascadeType.REFRESH})
     @JoinColumn(name = "CurrentAirportId")
     private Airport airport;
+
 
 
     @ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,
