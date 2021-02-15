@@ -1,7 +1,11 @@
 package com.khaled.Airline.System.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,29 +18,40 @@ public class Flight {
 
     @OneToOne(mappedBy = "PClass", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
-    private Ticket x;
+    private Ticket ticket;
 
+    @OneToOne(mappedBy = "SeatNumber", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Ticket seat;
+
+    @OneToOne(mappedBy = "gateCloseTime", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Ticket gateTicket;
 
 
 @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
         CascadeType.REFRESH})
-@JoinColumn(name = "AirportCountryFrom")
+@JoinColumn(name = "Departure")
     private Airport FlightFrom;
 
 
 @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
         CascadeType.REFRESH})
-@JoinColumn(name = "AirportCountryTo")
+@JoinColumn(name = "Arrival")
     private Airport FlightTo;
 
+    @NotBlank
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate FlightDate;
 
     @NotBlank
-    @Column(name = "DepartureTime")
-    private String DepartureTime;
+    @JsonFormat(pattern = "hh:mm")
+    private LocalTime ArrivalTime;
 
     @NotBlank
-    @Column(name = "ArrivalTime")
-    private String ArrivalTime;
+    @JsonFormat(pattern = "hh:mm")
+    private LocalTime DepartureTime;
+
 
     @NotBlank
     @Column(name = "TicketPrice")
@@ -45,6 +60,16 @@ public class Flight {
     @NotBlank
     @Column(name = "SeatsLeft")
     private int SeatsLeft;
+
+
+    public LocalDate getFlightDate() {
+        return FlightDate;
+    }
+
+    public void setFlightDate(LocalDate flightDate) {
+        FlightDate = flightDate;
+    }
+
 
     public int getFlight_no() {
         return flight_id;
@@ -71,23 +96,6 @@ public class Flight {
         SeatsLeft = seatsLeft;
     }
 
-    public String getDepartureTime() {
-        return DepartureTime;
-    }
-
-    public void setDepartureTime(String departureTime) {
-        DepartureTime = departureTime;
-    }
-
-    public String getArrivalTime() {
-        return ArrivalTime;
-    }
-
-    public void setArrivalTime(String arrivalTime) {
-        ArrivalTime = arrivalTime;
-    }
-
-
     public int getSeatLeft() {
         return SeatsLeft;
     }
@@ -96,7 +104,59 @@ public class Flight {
         SeatsLeft = seatLeft;
     }
 
+    public Ticket getTicket() {
+        return ticket;
+    }
 
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
 
+    public Ticket getSeat() {
+        return seat;
+    }
 
+    public void setSeat(Ticket seat) {
+        this.seat = seat;
+    }
+
+    public Ticket getGateTicket() {
+        return gateTicket;
+    }
+
+    public void setGateTicket(Ticket gateTicket) {
+        this.gateTicket = gateTicket;
+    }
+
+    public Airport getFlightFrom() {
+        return FlightFrom;
+    }
+
+    public void setFlightFrom(Airport flightFrom) {
+        FlightFrom = flightFrom;
+    }
+
+    public Airport getFlightTo() {
+        return FlightTo;
+    }
+
+    public void setFlightTo(Airport flightTo) {
+        FlightTo = flightTo;
+    }
+
+    public LocalTime getDepartureTime() {
+        return DepartureTime;
+    }
+
+    public void setDepartureTime(LocalTime departureTime) {
+        DepartureTime = departureTime;
+    }
+
+    public LocalTime getArrivalTime() {
+        return ArrivalTime;
+    }
+
+    public void setArrivalTime(LocalTime arrivalTime) {
+        ArrivalTime = arrivalTime;
+    }
 }

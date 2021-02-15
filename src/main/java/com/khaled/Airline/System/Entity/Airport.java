@@ -24,6 +24,43 @@ public class Airport {
     @Column(name = "GateNumber")
     private int GateNumber;
 
+
+
+
+    @OneToMany(mappedBy = "airport",
+            cascade = {CascadeType.DETACH,CascadeType.MERGE,
+                    CascadeType.PERSIST,CascadeType.REFRESH})
+    private Set<Plane> plane = new HashSet<>();
+
+
+    @OneToMany(mappedBy = "FlightFrom",cascade = CascadeType.ALL)
+    private Set<Flight> flightFr = new HashSet<>();
+
+    @OneToMany(mappedBy = "FlightTo",cascade = CascadeType.ALL)
+    private Set<Flight> flightTo = new HashSet<>();
+
+
+    @ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,
+            CascadeType.REFRESH})
+    @JoinTable(
+            name = "Plane_Airport",
+            joinColumns = @JoinColumn(name = "airportID"),
+            inverseJoinColumns = @JoinColumn(name = "plan_id")
+    )
+    private Set<Plane> planelist = new HashSet<>();
+
+    @OneToOne(mappedBy = "Gate", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Ticket ticketGateNumber;
+
+
+
+    //    @Column(name = "AirportCountryFrom")
+//    private String airportCountryFrom;
+//
+//    @Column(name = "AirportCountryTo")
+//    private String airportCountryTo;
+
     public int getGateNumber() {
         return GateNumber;
     }
@@ -31,12 +68,6 @@ public class Airport {
     public void setGateNumber(int gateNumber) {
         GateNumber = gateNumber;
     }
-
-    //    @Column(name = "AirportCountryFrom")
-//    private String airportCountryFrom;
-//
-//    @Column(name = "AirportCountryTo")
-//    private String airportCountryTo;
 
 
     public Set<Plane> getPlane() {
@@ -89,27 +120,7 @@ public class Airport {
 
 
 
-@OneToMany(mappedBy = "airport",
-        cascade = {CascadeType.DETACH,CascadeType.MERGE,
-        CascadeType.PERSIST,CascadeType.REFRESH})
-    private Set<Plane> plane = new HashSet<>();
 
-
-//    @OneToMany(mappedBy = "FlightFrom",cascade = CascadeType.ALL)
-//    private Set<Flight> flightFr = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "FlightTo",cascade = CascadeType.ALL)
-//    private Set<Flight> flightTo = new HashSet<>();
-
-
-    @ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    @JoinTable(
-            name = "Plane_Airport",
-            joinColumns = @JoinColumn(name = "airportID"),
-            inverseJoinColumns = @JoinColumn(name = "plan_id") //////////////////////////////////////////
-    )
-    private Set<Plane> planelist = new HashSet<>();
 
 
     @Override

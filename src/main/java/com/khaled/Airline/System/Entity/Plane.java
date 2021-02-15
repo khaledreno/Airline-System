@@ -23,9 +23,6 @@ public class Plane {
     @Column(name = "ManufactureYear")
     private int ManufactureYear;
 
-    @Column(name = "SeatNumber")
-    private int SeatNumber;
-
 ////    private PlaneClasses gClass;
 //    public enum gClass {
 //        ClassA,
@@ -33,13 +30,6 @@ public class Plane {
 //        ClassC;
 //    }
 
-    public int getSeatNumber() {
-        return SeatNumber;
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        SeatNumber = seatNumber;
-    }
 
 //
 

@@ -21,14 +21,19 @@ public class Ticket {
     @JoinColumn(name = "Class")
     private Flight PClass;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SeatNumber")
+    private Flight SeatNumber;
 
-//    public Plane getPClass() {
-//        return PClass;
-//    }
-//
-//    public void setPClass(Plane PClass) {
-//        this.PClass = PClass;
-//    }
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Gate")
+    private Flight Gate;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "GateCloses")
+    private Flight gateCloseTime;
+
+
 
     public Passenger getPassenger() {
         return passenger;
