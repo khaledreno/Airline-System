@@ -28,6 +28,11 @@ public class Flight {
             fetch = FetchType.LAZY, optional = false)
     private Ticket gateTicket;
 
+    @OneToOne(mappedBy = "FlightDate", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Ticket flightTicketDate;
+
+
 
 @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,
         CascadeType.REFRESH})

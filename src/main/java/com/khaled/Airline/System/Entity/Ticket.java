@@ -33,6 +33,10 @@ public class Ticket {
     @JoinColumn(name = "GateCloses")
     private Flight gateCloseTime;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "FlightDate")
+    private Flight FlightDate;
+
 
 
     public Passenger getPassenger() {
