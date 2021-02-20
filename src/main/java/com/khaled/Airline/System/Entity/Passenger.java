@@ -1,6 +1,7 @@
 package com.khaled.Airline.System.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Passenger {
@@ -9,10 +10,12 @@ public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int passenger_id;
 
-    @Column(name = "national_id",unique = true)
+    @Column(name = "national_id",unique = true,nullable=false)
+    @NotBlank(message = "* National ID is required")
     private int national_id;
 
-    @Column(name = "FirstName")
+    @Column(name = "FirstName",nullable=false)
+    @NotBlank(message = "* First Name is required")
     private String FirstName;
 
     @Column(name = "LastName")
@@ -21,24 +24,19 @@ public class Passenger {
     @Column(name = "NumberOfFlights")
     private int NumberOfFlights;
 
-    @Column(name = "Gender")
+    @Column(name = "Gender",nullable=false)
     private String Gender;
 
     @Column(name = "phone",unique = true)
     private String Phone;
 
     //mapping between ticket and passenger name
-    @OneToOne(mappedBy = "passenger", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Ticket Passngername;
+    //Unidirection is only in the entity that have the col
 
-    public Ticket getPassngername() {
-        return Passngername;
-    }
+//    @OneToOne(mappedBy = "passenger", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private Ticket Passngername;
 
-    public void setPassngername(Ticket passngername) {
-        Passngername = passngername;
-    }
 
     public int getPassenger_id() {
         return passenger_id;

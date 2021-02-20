@@ -14,27 +14,28 @@ public class Ticket {
     private int TicketPrice;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PassengerName")
+    @JoinColumn(name = "PassengerName",referencedColumnName = "passenger_id")
     private Passenger passenger;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Class")
-    private Flight PClass;
+    @JoinColumn(name = "Class",referencedColumnName = "PlaneClassesVar")
+    private Plane PClass;
+
+//
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "SeatNumber",referencedColumnName = "")
+    private int SeatNumber;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SeatNumber")
-    private Flight SeatNumber;
+    @JoinColumn(name = "Gate",referencedColumnName = "GateNumber")
+    private Airport Gate;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Gate")
-    private Flight Gate;
+    @JoinColumn(name = "GateCloses",referencedColumnName = "GateClosesTime")
+    private Flight gateClose;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "GateCloses")
-    private Flight gateCloseTime;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FlightDate")
+    @JoinColumn(name = "FlightDate",referencedColumnName = "FlightDate")
     private Flight FlightDate;
 
 

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Plane {
+ public class Plane {
 
     @Id
     @Column(name = "plan_id")
@@ -23,12 +23,12 @@ public class Plane {
     @Column(name = "ManufactureYear")
     private int ManufactureYear;
 
-////    private PlaneClasses gClass;
-//    public enum gClass {
-//        ClassA,
-//        ClassB,
-//        ClassC;
-//    }
+    private PlaneClasses PlaneClassesVar;
+    public enum PlaneClasses {
+        ClassA,
+        ClassB,
+        ClassC
+    }
 
 
 //
@@ -73,7 +73,7 @@ public class Plane {
         this.airportlist = airportlist;
     }
 
-    public int getCapacity() {
+     public int getCapacity() {
         return capacity;
     }
 

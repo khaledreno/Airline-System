@@ -24,9 +24,6 @@ public class Airport {
     @Column(name = "GateNumber")
     private int GateNumber;
 
-
-
-
     @OneToMany(mappedBy = "airport",
             cascade = {CascadeType.DETACH,CascadeType.MERGE,
                     CascadeType.PERSIST,CascadeType.REFRESH})
@@ -49,9 +46,10 @@ public class Airport {
     )
     private Set<Plane> planelist = new HashSet<>();
 
-    @OneToOne(mappedBy = "Gate", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Ticket ticketGateNumber;
+    //Unidirection is only in the entity that have the col
+//    @OneToOne(mappedBy = "Gate", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private Ticket ticketGateNumber;
 
 
 

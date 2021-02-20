@@ -12,25 +12,28 @@ import java.util.Set;
 @Entity(name = "flight")
 public class Flight {
 
+  //  Plane p = new Plane();
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int flight_id ;
 
-    @OneToOne(mappedBy = "PClass", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Ticket ticket;
-
-    @OneToOne(mappedBy = "SeatNumber", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Ticket seat;
-
-    @OneToOne(mappedBy = "gateCloseTime", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Ticket gateTicket;
-
-    @OneToOne(mappedBy = "FlightDate", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Ticket flightTicketDate;
+//    @OneToOne(mappedBy = "PClass", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private Ticket ticket;
+//
+//    @OneToOne(mappedBy = "SeatNumber", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private Ticket seat;
+//
+//    @OneToOne(mappedBy = "gateCloseTime", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private Ticket gateTicket;
+//
+//    @OneToOne(mappedBy = "FlightDate", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private Ticket flightTicketDate;
 
 
 
@@ -57,7 +60,6 @@ public class Flight {
     @JsonFormat(pattern = "hh:mm")
     private LocalTime DepartureTime;
 
-
     @NotBlank
     @Column(name = "TicketPrice")
     private int TicketPrice;
@@ -66,72 +68,8 @@ public class Flight {
     @Column(name = "SeatsLeft")
     private int SeatsLeft;
 
-
-    public LocalDate getFlightDate() {
-        return FlightDate;
-    }
-
-    public void setFlightDate(LocalDate flightDate) {
-        FlightDate = flightDate;
-    }
-
-
-    public int getFlight_no() {
-        return flight_id;
-    }
-
-    public void setFlight_no(int flight_no) {
-        this.flight_id = flight_no;
-    }
-
-    public int getTicketPrice() {
-        return TicketPrice;
-    }
-
-    public void setTicketPrice(int ticketPrice) {
-        TicketPrice = ticketPrice;
-    }
-
-
-    public int getSeatsLeft() {
-        return SeatsLeft;
-    }
-
-    public void setSeatsLeft(int seatsLeft) {
-        SeatsLeft = seatsLeft;
-    }
-
-    public int getSeatLeft() {
-        return SeatsLeft;
-    }
-
-    public void setSeatLeft(int seatLeft) {
-        SeatsLeft = seatLeft;
-    }
-
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-
-    public Ticket getSeat() {
-        return seat;
-    }
-
-    public void setSeat(Ticket seat) {
-        this.seat = seat;
-    }
-
-    public Ticket getGateTicket() {
-        return gateTicket;
-    }
-
-    public void setGateTicket(Ticket gateTicket) {
-        this.gateTicket = gateTicket;
-    }
+    @JsonFormat(pattern = "hh:mm")
+    private LocalTime GateClosesTime;
 
     public Airport getFlightFrom() {
         return FlightFrom;
@@ -149,12 +87,12 @@ public class Flight {
         FlightTo = flightTo;
     }
 
-    public LocalTime getDepartureTime() {
-        return DepartureTime;
+    public LocalDate getFlightDate() {
+        return FlightDate;
     }
 
-    public void setDepartureTime(LocalTime departureTime) {
-        DepartureTime = departureTime;
+    public void setFlightDate(LocalDate flightDate) {
+        FlightDate = flightDate;
     }
 
     public LocalTime getArrivalTime() {
@@ -164,4 +102,40 @@ public class Flight {
     public void setArrivalTime(LocalTime arrivalTime) {
         ArrivalTime = arrivalTime;
     }
+
+    public LocalTime getDepartureTime() {
+        return DepartureTime;
+    }
+
+    public void setDepartureTime(LocalTime departureTime) {
+        DepartureTime = departureTime;
+    }
+
+    public int getTicketPrice() {
+        return TicketPrice;
+    }
+
+    public void setTicketPrice(int ticketPrice) {
+        TicketPrice = ticketPrice;
+    }
+
+    public int getSeatsLeft() {
+//        return SeatsLeft-p.getCapacity();
+        return SeatsLeft;
+
+    }
+
+
+    public void setSeatsLeft(int seatsLeft) {
+        SeatsLeft = seatsLeft;
+    }
+
+    public LocalTime getGateClosesTime() {
+        return GateClosesTime;
+    }
+
+    public void setGateClosesTime(LocalTime gateClosesTime) {
+        GateClosesTime = gateClosesTime;
+    }
+
 }
