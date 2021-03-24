@@ -18,55 +18,43 @@ public class Airport {
     @Column(name = "AirportCountry")
     private String airportCountry;
 
-    @Column(name = "AirportCapacity")
+    @Column(name = "AirportCapacity",columnDefinition = "integer default 0")
     private int airportCapacity;
 
-    @Column(name = "GateNumber")
-    private int GateNumber;
+    @Column(name = "NumberOfGates",columnDefinition = "integer default 0")
+    private Integer GateNumber;
+
+//    @ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,
+//            CascadeType.REFRESH})
+//    @JoinTable(
+//            name = "Plane_Airport",
+//            joinColumns = @JoinColumn(name = "airportID"),
+//            inverseJoinColumns = @JoinColumn(name = "plan_id")
+//    )
+//    private Set<Plane> planelist = new HashSet<>();
+    //
+//    public Set<Plane> getPlanelist() {
+//        return planelist;
+//    }
+//
+//    public void setPlanelist(Set<Plane> planelist) {
+//        this.planelist = planelist;
+//    }
+
+//
+
+    public Integer getGateNumber() {
+        return GateNumber;
+    }
+
+    public void setGateNumber(Integer gateNumber) {
+        GateNumber = gateNumber;
+    }
 
     @OneToMany(mappedBy = "airport",
             cascade = {CascadeType.DETACH,CascadeType.MERGE,
                     CascadeType.PERSIST,CascadeType.REFRESH})
     private Set<Plane> plane = new HashSet<>();
-
-
-    @OneToMany(mappedBy = "FlightFrom",cascade = CascadeType.ALL)
-    private Set<Flight> flightFr = new HashSet<>();
-
-    @OneToMany(mappedBy = "FlightTo",cascade = CascadeType.ALL)
-    private Set<Flight> flightTo = new HashSet<>();
-
-
-    @ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    @JoinTable(
-            name = "Plane_Airport",
-            joinColumns = @JoinColumn(name = "airportID"),
-            inverseJoinColumns = @JoinColumn(name = "plan_id")
-    )
-    private Set<Plane> planelist = new HashSet<>();
-
-    //Unidirection is only in the entity that have the col
-//    @OneToOne(mappedBy = "Gate", cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY, optional = false)
-//    private Ticket ticketGateNumber;
-
-
-
-    //    @Column(name = "AirportCountryFrom")
-//    private String airportCountryFrom;
-//
-//    @Column(name = "AirportCountryTo")
-//    private String airportCountryTo;
-
-    public int getGateNumber() {
-        return GateNumber;
-    }
-
-    public void setGateNumber(int gateNumber) {
-        GateNumber = gateNumber;
-    }
-
 
     public Set<Plane> getPlane() {
         return plane;
@@ -76,13 +64,6 @@ public class Airport {
         this.plane = plane;
     }
 
-    public Set<Plane> getPlanelist() {
-        return planelist;
-    }
-
-    public void setPlanelist(Set<Plane> planelist) {
-        this.planelist = planelist;
-    }
 
     public int getAirportID() {
         return airportID;
@@ -118,9 +99,6 @@ public class Airport {
 
 
 
-
-
-
     @Override
     public String toString() {
         return "Airport{" +
@@ -131,3 +109,57 @@ public class Airport {
                 '}';
     }
 }
+
+//    @OneToMany(mappedBy = "FlightFrom",cascade = CascadeType.ALL)
+//    private Set<Flight> flightFr = new HashSet<>();
+
+//    @OneToMany(mappedBy = "FlightTo",cascade = CascadeType.ALL)
+//    private Set<Flight> flightTo = new HashSet<>();
+
+//plane in set do the needful
+
+
+//Unidirection is only in the entity that have the col
+//    @OneToOne(mappedBy = "Gate", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private Ticket ticketGateNumber;
+
+
+
+//    @Column(name = "AirportCountryFrom")
+//    private String airportCountryFrom;
+//
+//    @Column(name = "AirportCountryTo")
+//    private String airportCountryTo;
+
+
+
+
+//    public Set<Flight> getFlightFr() {
+//        return flightFr;
+//    }
+//
+//    public void setFlightFr(Set<Flight> flightFr) {
+//        this.flightFr = flightFr;
+//    }
+//
+//    public Set<Flight> getFlightTo() {
+//        return flightTo;
+//    }
+//
+//    public void setFlightTo(Set<Flight> flightTo) {
+//        this.flightTo = flightTo;
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+

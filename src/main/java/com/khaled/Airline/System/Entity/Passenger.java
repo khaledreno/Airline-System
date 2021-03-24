@@ -93,4 +93,17 @@ public class Passenger {
     public void setPhone(String phone) {
         Phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "passenger_id=" + passenger_id +
+                ", national_id=" + national_id +
+                ", FirstName='" + FirstName + '\'' +
+                ", LastName='" + LastName + '\'' +
+                ", NumberOfFlights=" + NumberOfFlights +
+                ", Gender='" + Gender + '\'' +
+                ", Phone='" + Phone + '\'' +
+                '}';
+    }
 }

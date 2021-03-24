@@ -8,6 +8,7 @@ import com.khaled.Airline.System.Service.PlaneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,20 +23,31 @@ public class PlaneController {
 
     @Autowired
     PlaneJPA planeJPA;
+//
+//    @GetMapping
+//    public ResponseEntity<?> findAllPlanes(){
+//        List<Plane> planes = planeJPA.findAll();
+//        return new ResponseEntity<>(planes,null,HttpStatus.FOUND);
+//    }
+
 
     @GetMapping
-    public ResponseEntity<?> findAllplanes(){
-        List<Plane> planes = planeJPA.findAll();
-        return new ResponseEntity<>(planes,null,HttpStatus.FOUND);
+    public List<Plane> findAllPlanes(){
+        return planeJPA.findAll();
     }
 
+//    @GetMapping("/{id}")
+//    public Optional<Plane> getPlaneById(@PathVariable int id){
+//    Plane p = planeJPA.findById(id).orElse(null);
+//    if (p == null){
+//        throw new GeneralException(PlaneException.CANNOT_FIND_PLANE);
+//    }
+//    return planeJPA.findById(id);
+//    }
+
     @GetMapping("/{id}")
-    public Optional<Plane> getPlaneById(@PathVariable int id){
-    Plane p = planeJPA.findById(id).orElse(null);
-    if (p == null){
-        throw new GeneralException(PlaneException.CANNOT_FIND_PLANE);
-    }
-    return planeJPA.findById(id);
+    public Plane getPlaneById(@PathVariable int id){
+        return planeJPA.findById(id).orElse(null);
     }
 
     @PostMapping

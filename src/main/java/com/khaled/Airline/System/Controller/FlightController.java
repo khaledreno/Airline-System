@@ -6,6 +6,7 @@ import com.khaled.Airline.System.Entity.Passenger;
 import com.khaled.Airline.System.Exceptions.FlghtException;
 import com.khaled.Airline.System.Exceptions.GeneralException;
 import com.khaled.Airline.System.Service.FlightService;
+import com.khaled.Airline.System.Service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ public class FlightController {
 
     @Autowired
     FlightService flightService;
+
+    @Autowired
+    TicketService ticketService;
 
     @Autowired
     FlightJPA flightJPA;
@@ -43,12 +47,21 @@ public class FlightController {
         return new ResponseEntity<>(f,null,HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<?> findAllFlights(){
-        List<Flight>flights = flightJPA.findAll();
-        return new ResponseEntity<>(flights,null, HttpStatus.FOUND);
+//    public ResponseEntity<?> findAllFlights(){
+//        List<Flight>flights = flightJPA.findAll();
+//        return new ResponseEntity<>(flights,null, HttpStatus.FOUND);
+@GetMapping
+public List<Flight>findAllFlights() {
+    {
+        for (int i = 1; i < flightJPA.count(); i++) {
+            ticketService.closeGateFun(i);
+        }
+
+        return flightJPA.findAll();
 
     }
+
+}
 
     @GetMapping("/{id}")
     public Optional<Flight> findFlighByid(@PathVariable int id ){
