@@ -47,21 +47,12 @@ public class FlightController {
         return new ResponseEntity<>(f,null,HttpStatus.CREATED);
     }
 
-//    public ResponseEntity<?> findAllFlights(){
-//        List<Flight>flights = flightJPA.findAll();
-//        return new ResponseEntity<>(flights,null, HttpStatus.FOUND);
-@GetMapping
-public List<Flight>findAllFlights() {
-    {
-        for (int i = 1; i < flightJPA.count(); i++) {
-            ticketService.closeGateFun(i);
-        }
-
-        return flightJPA.findAll();
-
+    @GetMapping
+    public ResponseEntity<?> findAllFlights() {
+        List<Flight> flights = flightJPA.findAll();
+        return new ResponseEntity<>(flights, null, HttpStatus.FOUND);
     }
 
-}
 
     @GetMapping("/{id}")
     public Optional<Flight> findFlighByid(@PathVariable int id ){

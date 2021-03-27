@@ -5,8 +5,10 @@ import com.khaled.Airline.System.DAO.TicketJPA;
 import com.khaled.Airline.System.Entity.Flight;
 import com.khaled.Airline.System.Entity.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalTime;
 import java.util.Optional;
 
@@ -19,21 +21,19 @@ public class TicketService {
     @Autowired
     FlightJPA flightJPA;
 
-//    @Autowired
-//    Ticket ticket;
-
-    public void closeGateFun(int FlightId) {
+@NonNull
+    public LocalTime closeGateFun(int FlightId) {
 
         LocalTime GateCloseTime;
-        Flight flObj = flightJPA.findById(FlightId).orElse(new Flight());
-        LocalTime depTimePri = flObj.getDepartureTime();
+        Optional<Flight> flObj = flightJPA.findById(FlightId);
+        LocalTime depTimePri = flObj.orElse(null).getDepartureTime(); //nonnull reasn .getDepartureTime
         GateCloseTime = depTimePri.minusMinutes(30);
 
-        flObj.setGateClosesTime(GateCloseTime);
+     //   flObj.set(GateCloseTime);
+     //   flightJPA.save(flObj);
 
-      // ticketJPA.insertGateCloseTime(GateCloseTime);
-       // ticket.setGateCloseTime(GateCloseTime);
-       // return GateCloseTime;
+
+        return GateCloseTime;
     }
 }
 
